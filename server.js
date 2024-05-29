@@ -84,6 +84,52 @@ app.get('/api/empleados', (req, res) => {
     });
 });
 
+// Ruta para insertar un nuevo empleado
+app.post('/api/empleados', (req, res) => {
+    const nuevoEmpleado = req.body;
+    const query = 'INSERT INTO empleados SET ?';
+    db.query(query, nuevoEmpleado, (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.status(201).send('Empleado creado exitosamente');
+    });
+});
+
+
+// Ruta para actualizar un empleado
+app.put('/api/empleados/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedEmpleado = req.body;
+    const query = 'UPDATE empleados SET ? WHERE id = ?';
+    db.query(query, [updatedEmpleado, id], (err, result) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.status(200).send('Empleado actualizado exitosamente');
+    });
+});
+
+// Ruta para buscar empleados por nombre
+app.get('/api/empleados/buscar', (req, res) => {
+    const { nombre } = req.query;
+    if (!nombre) {
+        return res.status(400).send('El nombre es requerido para la búsqueda.');
+    }
+
+    const query = 'SELECT * FROM empleados WHERE nombres LIKE ?';
+    db.query(query, [`${nombre}%`], (err, results) => {
+        if (err) {
+            console.error('Database error:', err);
+            return res.status(500).send('Internal server error');
+        }
+        res.json(results);
+    });
+});
+
+
 app.get('/api/usuarios', (req, res) => {
     const query = 'SELECT * FROM usuarios';
     db.query(query, (err, results) => {
@@ -94,7 +140,6 @@ app.get('/api/usuarios', (req, res) => {
         res.json(results);
     });
 });
-
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`);
