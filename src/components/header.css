@@ -1,0 +1,81 @@
+header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los enlaces de navegación se envuelvan */
+    justify-content: center;
+    flex-grow: 1; /* Permitir que la navegación crezca para llenar el espacio disponible */
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+header .right-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Agregar margen superior para crear espacio entre la navegación y la sección derecha */
+}
+
+header .right-section img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+header .right-section button {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .right-section button:hover {
+    background-color: #c9302c;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Colocar los elementos en una columna */
+        align-items: flex-start; /* Alinear los elementos al inicio */
+    }
+
+    header nav {
+        justify-content: flex-start; /* Alinear la navegación al inicio */
+        width: 100%; /* Tomar todo el ancho disponible */
+    }
+
+    header nav a {
+        margin: 5px 0; /* Reducir el margen entre los enlaces */
+        width: 100%; /* Tomar todo el ancho disponible */
+        text-align: center; /* Centrar el texto de los enlaces */
+    }
+
+    header .right-section {
+        margin-top: 10px; /* Crear espacio entre la navegación y la sección derecha */
+        width: 100%; /* Tomar todo el ancho disponible */
+        justify-content: space-between; /* Distribuir espacio entre los elementos */
+    }
+
+    header .right-section button {
+        width: auto; /* Permitir que el botón tome su tamaño natural */
+    }
+}
