@@ -44,42 +44,68 @@ h1, h2 {
 .search-container button {
     padding: 8px 16px;
     border: none;
-    background-color: #007bff;
     color: white;
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
 }
 
-.search-container button:hover {
+.search-container .search-button {
+    background-color: #007bff;
+}
+
+.search-container .cancel-button {
+    background-color: #d9534f;
+}
+
+.search-container .create-button {
+    background-color: #5cb85c;
+}
+
+.search-container .search-button:hover {
     background-color: #0056b3;
 }
 
-/* Estilos para el contenedor de la tabla */
-.table-container {
-    overflow-x: auto;
+.search-container .cancel-button:hover {
+    background-color: #c9302c;
 }
 
-table {
+.search-container .create-button:hover {
+    background-color: #4cae4c;
+}
+
+/* Estilos para el contenedor de la tabla */
+.table-scroll-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+.table-scroll {
+    overflow-x: auto;
+    overflow-y: visible;
+    position: relative;
+    border: 1px solid #ddd;
+    background: #fff;
+    white-space: nowrap;
+}
+
+.table-scroll table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    background: #fff;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
+.table-scroll th, .table-scroll td {
     padding: 12px;
+    border: 1px solid #ddd;
     text-align: left;
 }
 
-th {
+.table-scroll th {
     background-color: #f8f8f8;
 }
 
-tr:nth-child(even) {
+.table-scroll tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
@@ -104,15 +130,15 @@ tr:nth-child(even) {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 700px;
-    max-height: 80%; /* Limita la altura */
-    overflow-y: auto; /* Agrega scroll vertical */
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 /* Estilos para el grid del formulario */
 .form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-    gap: 40px; /* Espacio entre columnas */
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
 /* Estilos para el grupo de formularios */
@@ -122,7 +148,7 @@ tr:nth-child(even) {
 }
 
 .form-group label {
-    margin-bottom: 8px; /* Reducir el margen inferior de las etiquetas */
+    margin-bottom: 8px;
 }
 
 .form-group input {
@@ -136,46 +162,41 @@ tr:nth-child(even) {
 .form-group input[type="date"],
 .form-group input[type="email"] {
     width: 100%;
-    max-width: 100%; /* Ajustar el ancho máximo al 100% del contenedor */
+    max-width: 100%;
 }
 
 /* Estilos para los botones del formulario */
 .form-actions {
-    grid-column: span 2; /* Hacer que los botones ocupen el ancho de ambas columnas */
+    grid-column: span 2;
     display: flex;
-    justify-content: center; /* Centrar los botones */
+    justify-content: center;
     margin-top: 20px;
 }
 
-/* Establece el padding para los botones en 20px arriba y abajo, 20px a la izquierda y derecha */
 .form-actions button {
     padding: 10px 20px;
-    border: none; /* Elimina el borde del botón */
-    border-radius: 4px; /* Agrega esquinas redondeadas al botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    margin: 0 10px; /* Espacio entre los botones */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 10px;
 }
 
-/* Estilos para el botón de envío del formulario */
 .form-actions button[type="submit"] {
-    background-color: #007bff; /* Establece el color de fondo del botón de envío */
-    color: white; /* Establece el color del texto del botón de envío */
+    background-color: #007bff;
+    color: white;
 }
 
-/* Estilos al pasar el cursor sobre el botón de envío */
 .form-actions button[type="submit"]:hover {
-    background-color: #0056b3; /* Cambia el color de fondo del botón de envío al pasar el cursor */
+    background-color: #0056b3;
 }
 
-/* Estilos para el botón de cancelar del formulario */
 .form-actions button[type="button"] {
-    background-color: #d9534f; /* Establece el color de fondo del botón de cancelar */
-    color: white; /* Establece el color del texto del botón de cancelar */
+    background-color: #d9534f;
+    color: white;
 }
 
-/* Estilos al pasar el cursor sobre el botón de cancelar */
 .form-actions button[type="button"]:hover {
-    background-color: #c9302c; /* Cambia el color de fondo del botón de cancelar al pasar el cursor */
+    background-color: #c9302c;
 }
 
 /* Estilos para los botones de edición y visualización */
@@ -185,6 +206,22 @@ tr:nth-child(even) {
     cursor: pointer;
     font-size: 16px;
     margin: 0 5px;
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.view-btn {
+    color: #5bc0de;
+}
+
+.edit-btn:hover {
+    color: #0056b3;
+}
+
+.view-btn:hover {
+    color: #31b0d5;
 }
 
 /* General styles */
@@ -239,14 +276,25 @@ a.back-button {
     padding: 10px 20px;
     margin-left: 10px;
     border: none;
-    background-color: #4CAF50;
     color: white;
     cursor: pointer;
     border-radius: 5px;
 }
 
+.search-container button.search-button {
+    background-color: #007bff;
+}
+
+.search-container button.cancel-button {
+    background-color: #d9534f;
+}
+
+.search-container button.create-button {
+    background-color: #5cb85c;
+}
+
 .search-container button:hover {
-    background-color: #45a049;
+    opacity: 0.9;
 }
 
 /* Table container styles */
@@ -395,4 +443,66 @@ button.view-btn:hover {
 
 .search-result-item:hover {
     background-color: #ddd;
+}
+
+
+
+/* NOMINAAA*/
+
+.nomina-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #000;
+    width: 100%;
+    max-width: 800px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.nomina-container h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.nomina-container p {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+.nomina-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.nomina-table th, .nomina-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.nomina-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.nomina-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.nomina-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.nomina-table tbody tr td:nth-child(1),
+.nomina-table tbody tr td:nth-child(2) {
+    border-right: 1px solid #ddd;
+}
+
+.nomina-table tbody tr td:nth-child(3),
+.nomina-table tbody tr td:nth-child(4) {
+    border-right: 1px solid #ddd;
 }

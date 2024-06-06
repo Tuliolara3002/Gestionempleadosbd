@@ -1,0 +1,71 @@
+/* NominaGeneral.css */
+
+.nomina-container {
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fafafa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+}
+
+.nomina-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.nomina-container p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.nomina-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 8px; /* Reduce font size further */
+}
+
+.nomina-table th, .nomina-table td {
+    border: 1px solid #ddd;
+    padding: 2px; /* Reduce padding further */
+    text-align: center;
+    word-break: break-word; /* Ensure long text wraps within cells */
+}
+
+.nomina-table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    .nomina-container {
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    .nomina-container h2, .nomina-container p {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    .nomina-table {
+        font-size: 8px; /* Ensure font size is small enough to fit table */
+    }
+
+    .nomina-table th, .nomina-table td {
+        padding: 2px;
+    }
+}

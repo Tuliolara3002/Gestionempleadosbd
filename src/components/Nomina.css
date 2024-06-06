@@ -1,0 +1,68 @@
+.nomina-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 12px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+}
+
+.nomina-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.nomina-container p {
+    margin: 5px 0;
+}
+
+.nomina-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.nomina-header p {
+    margin: 0;
+}
+
+.nomina-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nomina-table th, .nomina-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.nomina-table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.nomina-table td:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.nomina-totals {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.nomina-footer {
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}

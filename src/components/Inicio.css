@@ -1,0 +1,42 @@
+/* Inicio.css */
+
+header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0056b3;
+    position: relative;
+}
+
+.footer {
+    padding: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+    color: #333;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+}
+
+.right-section .logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.right-section button {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.right-section button:hover {
+    background-color: #c9302c;
+}

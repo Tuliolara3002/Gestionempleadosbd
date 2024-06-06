@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './login.css'; // Importa el archivo CSS
+import './login.css'; // Asegúrate de que este archivo exista en la misma carpeta que este archivo JS
 
 const Login = ({ onLoginSuccess }) => {
     const [nombreUsuario, setNombreUsuario] = useState('');
     const [contraseña, setContraseña] = useState('');
     const [error, setError] = useState('');
-  
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,42 +15,45 @@ const Login = ({ onLoginSuccess }) => {
                 contraseña
             });
             if (response.status === 200) {
-                onLoginSuccess();
+                onLoginSuccess(response.data.role);
             }
         } catch (err) {
-            setError('Usuario o contraseña incorrectos');
+            if (err.response) {
+                // El servidor respondió con un estado diferente a 2xx
+                setError(err.response.data);
+            } else {
+                // El servidor no respondió o hubo un error en la solicitud
+                setError('Error en la solicitud de inicio de sesión');
+            }
         }
     };
-
-  
 
     return (
         <div className="login-wrapper">
             <div className="login-container">
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className="form-group">
                         <label>Nombre de Usuario:</label>
                         <input
                             type="text"
+                            className="form-control"
                             value={nombreUsuario}
                             onChange={(e) => setNombreUsuario(e.target.value)}
                         />
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label>Contraseña:</label>
                         <input
                             type="password"
+                            className="form-control"
                             value={contraseña}
                             onChange={(e) => setContraseña(e.target.value)}
                         />
                     </div>
-                    <button type="submit">Login</button>
-                    {error && <p>{error}</p>}
+                    <button type="submit" className="btn">Login</button>
+                    {error && <p className="error">{error}</p>}
                 </form>
-              
-               
-                
             </div>
         </div>
     );

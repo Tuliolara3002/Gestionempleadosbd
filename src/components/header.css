@@ -1,50 +1,75 @@
 header {
-    background-color: #f0f0f0;
+    background-color: #000000;
     padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc;
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
+    border-bottom: 2px solid #0056b3;
+    position: relative; /* Añadir posición relativa para alinear las líneas verticales */
 }
 
 header nav {
     display: flex;
-    flex-wrap: wrap; /* Permitir que los enlaces de navegación se envuelvan */
-    justify-content: center;
     flex-grow: 1; /* Permitir que la navegación crezca para llenar el espacio disponible */
+    justify-content: space-around; /* Distribuir espaciado uniformemente */
 }
 
 header nav a {
-    margin: 0 10px;
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
+    padding: 10px;
+    position: relative; /* Añadir posición relativa para alinear las líneas verticales */
+    transition: background-color 0.3s, transform 0.3s; /* Transición para el color de fondo y transformación */
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px; /* Ajustar posición a la derecha de cada enlace */
+    height: 70%;
+    width: 1px;
+    background-color: white;
+    transform: translateY(-50%);
+    transition: height 0.3s; /* Transición para la altura de la línea vertical */
+}
+
+header nav a:last-child::after {
+    display: none; /* Ocultar la línea vertical después del último enlace */
 }
 
 header nav a:hover {
-    text-decoration: underline;
+    background-color: white; /* Cambiar el fondo al pasar el cursor */
+    color: #000000; /* Cambiar el color del texto al pasar el cursor */
+    transform: translateY(-2px); /* Ajustar la posición hacia arriba para el efecto 3D */
+}
+
+header nav a:hover::after {
+    height: 100%; /* Aumentar la altura de la línea vertical al pasar el cursor */
 }
 
 header .right-section {
     display: flex;
     align-items: center;
-    margin-top: 10px; /* Agregar margen superior para crear espacio entre la navegación y la sección derecha */
 }
 
 header .right-section img {
     width: 50px;
     height: 50px;
     margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
 header .right-section button {
-    padding: 5px 10px;
+    padding: 8px 16px;
     background-color: #d9534f;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 header .right-section button:hover {
@@ -54,28 +79,37 @@ header .right-section button:hover {
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Colocar los elementos en una columna */
-        align-items: flex-start; /* Alinear los elementos al inicio */
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     header nav {
-        justify-content: flex-start; /* Alinear la navegación al inicio */
-        width: 100%; /* Tomar todo el ancho disponible */
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
     }
 
     header nav a {
-        margin: 5px 0; /* Reducir el margen entre los enlaces */
-        width: 100%; /* Tomar todo el ancho disponible */
-        text-align: center; /* Centrar el texto de los enlaces */
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    header nav a::after {
+        display: none; /* Quitar líneas verticales en pantallas pequeñas */
     }
 
     header .right-section {
-        margin-top: 10px; /* Crear espacio entre la navegación y la sección derecha */
-        width: 100%; /* Tomar todo el ancho disponible */
-        justify-content: space-between; /* Distribuir espacio entre los elementos */
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    header .right-section img {
+        margin-right: 0;
     }
 
     header .right-section button {
-        width: auto; /* Permitir que el botón tome su tamaño natural */
+        width: auto;
     }
 }
