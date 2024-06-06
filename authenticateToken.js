@@ -6,7 +6,7 @@ const authenticateToken = (req, res, next) => {
         return res.status(403).send('Access denied');
     }
 
-    jwt.verify(token, 'your_secret_key_here', (err, user) => {
+    jwt.verify(token, 'mySecretKey', (err, user) => {
         if (err) {
             return res.status(403).send('Invalid token');
         }
