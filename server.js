@@ -16,9 +16,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '', // Cambia esto por tu contraseña de MySQL
+    host: 'empleados-1.cnww2gok6h4f.us-east-2.rds.amazonaws.com',
+    user: 'admin',
+    password: 'Ultraman24', // Cambia esto por tu contraseña de MySQL
     database: 'gestionempleados'
 });
 
