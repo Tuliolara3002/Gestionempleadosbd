@@ -10,7 +10,7 @@ const Login = ({ onLoginSuccess }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/login', {
+            const response = await axios.post('http://18.219.211.181:3001/login', {
                 nombre_usuario: nombreUsuario,
                 contraseña
             });
